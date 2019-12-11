@@ -46,19 +46,6 @@
 \DeclareFieldFormat{url}{%
   \mkbibacro{URL}\addcolon\space
   \href{#1}{\nolinkurl{\thefield{urlraw}}}}
-%to sort dis shet
-\DeclareSourcemap{
-  \maps[datatype=bibtex]{
-    \map{
-      \step[fieldsource=langid, match=russian, final]
-      \step[fieldset=presort, fieldvalue={a}]
-    }
-    \map{
-      \step[fieldsource=langid, notmatch=russian, final]
-      \step[fieldset=presort, fieldvalue={z}]
-    }
-  }
-}
 
 %setting page geometry
 \usepackage[
