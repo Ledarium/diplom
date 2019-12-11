@@ -1,0 +1,193 @@
+%Package extsizes not only changes the fontsize, but also amends various skips as well as the margins.
+%Changing the page geometry after loading the package will give fixed margins.
+%\usepackage{extsizes}
+
+%fonts and localization
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\RequirePackage{polyglossia}
+\providehyphenmins{russian}{{3}{3}}
+\setdefaultlanguage[babelshorthands=true,spelling=modern]{russian}
+\setotherlanguage{english}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+\setmonofont{Liberation Mono}
+\newfontfamily\cyrillicfont{Liberation Serif}
+\newfontfamily\cyrillicfontsf{Liberation Sans}
+\newfontfamily\cyrillicfonttt[Scale=0.8]{Liberation Mono}
+\defaultfontfeatures{Ligatures=TeX}
+\defaultfontfeatures{Mapping=tex-text}
+
+%math
+\usepackage{amssymb}
+\usepackage{amsmath}
+%for \degree
+\usepackage{gensymb}
+
+% table of contents
+\usepackage[tocflat]{tocstyle}
+
+% bibliography
+\usepackage[parentracker=true,
+            backend=biber,
+            language=auto,
+            autolang=other,
+            hyperref=auto,
+            citestyle=gost-numeric,
+            bibstyle=gost-numeric]
+            {biblatex}
+\DefineBibliographyStrings{russian}{
+    bibliography = {Список использованных источников},
+    references = {Список использованных источников}
+}
+\addbibresource{my.bib}
+%disable uri encoding
+\usepackage{hyperref}
+\DeclareFieldFormat{url}{%
+  \mkbibacro{URL}\addcolon\space
+  \href{#1}{\nolinkurl{\thefield{urlraw}}}}
+%to sort dis shet
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=langid, match=russian, final]
+      \step[fieldset=presort, fieldvalue={a}]
+    }
+    \map{
+      \step[fieldsource=langid, notmatch=russian, final]
+      \step[fieldset=presort, fieldvalue={z}]
+    }
+  }
+}
+
+%setting page geometry
+\usepackage[
+a4paper, includefoot,
+left=3cm, right=2cm, top=2cm, bottom=1.5cm,
+headsep=1cm, footskip=1cm
+]{geometry}
+
+% indent first paragraph
+\usepackage{indentfirst}
+
+%not sure abt this
+\usepackage{csquotes}
+%quotations
+\usepackage[
+    left = «,%
+    right = »,%
+    leftsub = „,%
+    rightsub = “%
+]{dirtytalk}
+
+%use \input for files. used with latexmk
+\newcommand\inputfile[1]{%
+    \InputIfFileExists{#1}{}{\typeout{No file #1.}}%
+}
+
+% line spacing
+\usepackage[nodisplayskipstretch]{setspace}
+\setstretch{1.5}
+
+%pictures
+\usepackage{graphicx}
+\graphicspath{{img/}}
+\DeclareGraphicsExtensions{.png,.jpg,.gif}
+
+% \includepdf
+\usepackage{pdfpages}
+
+%disable hyphenation
+%\disablehyphenation
+
+%justifying
+\usepackage{ragged2e}
+
+%paragraph indent
+\setlength{\parindent}{1.25cm}
+\usepackage{indentfirst}
+
+%titles
+\newcommand*{\justifyheading}{\centering}
+\usepackage[explicit]{titlesec}
+
+\titleformat{\chapter}[display]
+  {\normalfont\justifyheading\bfseries}
+  {\thechapter}{1em}{\MakeUppercase{#1}}
+  \titlespacing*{\chapter}{\parindent}{-18pt plus 4pt minus 2pt}{30pt plus 4pt minus 2pt}
+
+\titleformat{\section}
+  {\normalfont\bfseries}
+  {\thesection}{1em}{#1}
+  \titlespacing*{\section}{\parindent}{12pt plus 4pt minus 2pt}{12pt plus 4pt minus 2pt}
+
+\titleformat{\subsection}
+  {\normalfont\bfseries}
+  {\thesubsection}{1em}{#1}
+  \titlespacing*{\subsection}{\parindent}{12pt plus 4pt minus 2pt}{12pt plus 4pt minus 2pt}
+
+\titleformat{\subsubsection}
+  {\normalfont}
+  {\thesubsubsection}{1em}{#1}
+  \titlespacing*{\subsubsection}{\parindent}{12pt plus 4pt minus 2pt}{12pt plus 4pt minus 2pt}
+
+%setting numeration
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+\setcounter{secnumdepth}{3}
+
+%setting lists margin
+\usepackage{enumitem}
+%\setlist{nosep,leftmargin=\parindent}
+\setlist{left=0pt .. \parindent,nosep}
+%\setlist{labelindent=\parindent,leftmargin=*,nosep}
+
+\usepackage{float}
+%itemize separator
+\renewcommand{\labelitemi}{—}
+\renewcommand{\labelitemii}{—}
+\renewcommand{\labelitemiii}{—}
+
+\usepackage{chngcntr}
+\counterwithin{equation}{section}
+%tables and figures https://habr.com/ru/post/144648/
+\usepackage[
+    singlelinecheck=false, %for caption to be aligned left
+    tableposition=top,
+    figurewithin=section,tablewithin=section] %see chngcntr below
+{caption}
+\usepackage{subcaption}
+\DeclareCaptionLabelFormat{gostfigure}{Рисунок #2}
+\DeclareCaptionLabelFormat{gosttable}{Таблица #2}
+\DeclareCaptionLabelSeparator{gost}{~—~}
+\DeclareCaptionLabelFormat{continued}{Продолжение таблицы~#2}
+\captionsetup{labelsep=gost}
+\captionsetup[figure]{justification=centering,labelformat=gostfigure}
+\captionsetup[table]{justification=raggedright,labelformat=gosttable}
+
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thesubfigure}{\asbuk{subfigure}}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+%\usepackage[notindex,nottoc]{tocbibind}
+
+\usepackage{array, multirow, makecell}
+\usepackage{pgfplotstable}
+\usepackage{booktabs}
+
+\usepackage{xtab}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\estimate@lineht}{1\p@}{-2.5\p@}{}{}
+\makeatother
+% в \tablefirsthead{\shrinkheight{-\normalbaselineskip}}
+
+\usepackage{paracol}
+\setcellgapes{4pt}
+\makegapedcells
+
+\emergencystretch=15pt
+
+\usepackage{verbatim}
