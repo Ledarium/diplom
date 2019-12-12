@@ -15,7 +15,7 @@ if [ "$1" == "--full" ]; then
     rm -rf $DIR/out
     mkdir $DIR/out
 fi
-if ["$MYTEX_DIR" != "$DIR"]; then
+if [ "$MYTEX_DIR" != "$DIR" ]; then
     cp -f $MYTEX_DIR/CMakeLists.txt $DIR/
     cp -f $MYTEX_DIR/build.sh $DIR/
     cp -f $MYTEX_DIR/tex/preamble.inc.tex $DIR/tex/
