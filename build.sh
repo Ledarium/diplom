@@ -15,10 +15,11 @@ if [ "$1" == "--full" ]; then
     rm -rf $DIR/out
     mkdir $DIR/out
 fi
-cp -f $MYTEX_DIR/CMakeLists.txt $DIR/
-cp -f $MYTEX_DIR/build.sh $DIR/
-cp -f $MYTEX_DIR/UseLATEX.cmake $DIR/cmake/
-cp -f $MYTEX_DIR/tex/preamble.inc.tex $DIR/tex/
+if ["$MYTEX_DIR" != "$DIR"]; then
+    cp -f $MYTEX_DIR/CMakeLists.txt $DIR/
+    cp -f $MYTEX_DIR/build.sh $DIR/
+    cp -f $MYTEX_DIR/tex/preamble.inc.tex $DIR/tex/
+fi
 cp $DIR/bib/* $DIR/out/
 cp $DIR/tex/* $DIR/out/
 cp $DIR/img/* $DIR/out/
