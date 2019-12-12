@@ -1,0 +1,31 @@
+\documentclass[
+    a4paper,
+    14pt,
+    captions=tableheading,
+    russian
+]{scrreprt}
+
+% Остальные стандартные настройки убраны в preamble.inc.tex.
+\include{preamble.inc}
+
+\begin{document}
+
+%\include{00-titul}
+
+\setcounter{page}{4}
+\tableofcontents
+\thispagestyle{empty} % выключаем отображение номера для этой страницы
+
+%paragraph indent
+\setlength{\parindent}{1.25cm}
+
+\clearpage
+%text goes here
+\input{10-intro}
+%\input{20-analysis}
+
+\printbibliography[
+    heading=bibintoc
+]
+
+\end{document}
