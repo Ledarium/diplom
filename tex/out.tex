@@ -10,9 +10,9 @@
 
 \begin{document}
 
-\include{00-titul}
+%\include{00-titul}
 
-\setcounter{page}{2} % номер страницы оглавления. Может быть полезным при использовании не родного титульного
+\setcounter{page}{7} % номер страницы оглавления. Может быть полезным при использовании не родного титульного
 \tableofcontents
 \thispagestyle{empty} % выключаем отображение номера для этой страницы
 
@@ -21,8 +21,14 @@
 
 \clearpage
 %text goes here
-\input{10-intro}
-%\input{20-analysis}
+\input{05-intro}
+\clearpage
+\input{10-lan}
+\input{12-arch}
+\input{14-terminals}
+\input{16-thin}
+\clearpage
+\input{90-outro}
 
 \printbibliography[
     heading=bibintoc
