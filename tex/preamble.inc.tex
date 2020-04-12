@@ -30,8 +30,9 @@
 % bibliography
 \usepackage[parentracker=true,
             backend=biber,
-            language=auto,
-            autolang=other,
+            language=autobib,% получение языка из babel/polyglossia, default: autobib % если ставить autocite или auto, то цитаты в тексте с указанием страницы, получат указание страницы на языке оригинала
+            autolang=other,% многоязычная библиография
+            clearlang=true,% внутренний сброс поля language, если он совпадает с языком из babel/polyglossia
             hyperref=auto,
             citestyle=gost-numeric,
             bibstyle=gost-numeric]
@@ -46,6 +47,19 @@
 \DeclareFieldFormat{url}{%
   \mkbibacro{URL}\addcolon\space
   \href{#1}{\nolinkurl{\thefield{urlraw}}}}
+
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=language, match=russian, final]
+      \step[fieldset=presort, fieldvalue={a}]
+    }
+    \map{
+      \step[fieldsource=language, notmatch=russian, final]
+      \step[fieldset=presort, fieldvalue={z}]
+    }
+  }
+}
 
 %setting page geometry
 \usepackage[
@@ -150,9 +164,9 @@ headsep=1cm, footskip=1cm
 \captionsetup[figure]{justification=centering,labelformat=gostfigure}
 \captionsetup[table]{justification=raggedright,labelformat=gosttable}
 
-\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thefigure}{\arabic{figure}}
 \renewcommand{\thesubfigure}{\asbuk{subfigure}}
-\renewcommand{\thetable}{\thesection.\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}
 \renewcommand{\theequation}{\thesection.\arabic{equation}}
 
 %\usepackage[notindex,nottoc]{tocbibind}
