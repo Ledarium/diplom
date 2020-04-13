@@ -138,8 +138,8 @@ headsep=1cm, footskip=1cm
 %setting lists margin
 \usepackage{enumitem}
 %\setlist{nosep,leftmargin=\parindent}
-\setlist{left=0pt .. \parindent,nosep}
-%\setlist{labelindent=\parindent,leftmargin=*,nosep}
+%\setlist{left=0pt .. \parindent,nosep}
+\setlist{itemindent=\parindent,left=\parindent .. 2\parindent,leftmargin=\parindent,nosep}
 
 \usepackage{float}
 %itemize separator
@@ -152,8 +152,8 @@ headsep=1cm, footskip=1cm
 %tables and figures https://habr.com/ru/post/144648/
 \usepackage[
     singlelinecheck=false, %for caption to be aligned left
-    tableposition=top,
-    figurewithin=section,tablewithin=section] %see chngcntr below
+    tableposition=top]
+    %figurewithin=section,tablewithin=section] %see chngcntr below
 {caption}
 \usepackage{subcaption}
 \DeclareCaptionLabelFormat{gostfigure}{Рисунок #2}
