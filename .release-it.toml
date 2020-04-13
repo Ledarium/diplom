@@ -1,8 +1,14 @@
 [hooks]
-"after:git" = ["git checkout master", "git merge develop", "./build.sh --full"]
+"before:init" = ["./build.sh --full"]
+"after:version" = ["git checkout master", "git merge develop"]
 "after:release" = ["git checkout develop"]
 
 [git]
+"changelog" = """
+    git log --pretty=format:\"%s (%h)\" ${latestTag}...HEAD --grep='+ ' && \
+    echo "\nа также\n" && \
+    git log --pretty=format:\"%s (%h)\" ${latestTag}...HEAD --grep='+ ' --invert-grep
+"""
 "commitMessage" = "Диплом: версия ${version}"
 "commit" = false
 
@@ -10,3 +16,4 @@
 "releaseName" = "Диплом: версия ${version}"
 "release" = true
 "assets" = ["out.pdf"]
+"draft" = true

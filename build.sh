@@ -27,6 +27,8 @@ cd $DIR/out
 if [ "$1" == "--full" ]; then
 	cmake ..
 	make
+elif [ "$1" == "--short" ]; then
+	xelatex out.tex
 else
 	xelatex --no-pdf out.tex
 	biblatex out.tex
