@@ -191,3 +191,17 @@ headsep=1cm, footskip=1cm
 
 \usepackage{verbatim}
 \usepackage{desclist}
+
+%count number of pages, use with \pageref{LastPage}
+\usepackage{lastpage}
+%maths \FPeval{\result}{clip(5+6)}%
+% $5+6=\result$
+\usepackage[nomessages]{fp}
+
+%count figures, tables and cites
+%Выпускная работа содержит \pageref{LastPage} страниц, из них рисунков: \totalfigures,
+%таблиц: \totaltables, литературных источников: \total{citenum}.
+\usepackage[figure,table]{totalcount}
+\usepackage{totcount}
+\newtotcounter{citenum}
+\AtEveryBibitem{\stepcounter{citenum}}
