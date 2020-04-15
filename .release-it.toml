@@ -1,11 +1,12 @@
 [hooks]
-"before:init" = ["git checkout master", "git merge develop", "./build.sh --full"]
+"after:git" = ["git checkout master", "git merge develop", "./build.sh --full"]
 "after:release" = ["git checkout develop"]
 
 [git]
 "commitMessage" = "Диплом: версия ${version}"
-"requireBranch" = "master"
+"commit" = false
 
 [github]
+"releaseName" = "Диплом: версия ${version}"
 "release" = true
 "assets" = ["out.pdf"]
