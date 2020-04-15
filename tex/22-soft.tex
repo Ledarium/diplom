@@ -4,7 +4,7 @@
 семейства Windows. Также, необходима ОС, позволяющая многопользовательскую работу, то
 есть Windows Server. Актуальная на момент разработки версия — Windows Server 2019. У
 данной версии есть три варианта: Essentials, Standart и Datacenter.
-\cite{ref:win_srv_comp}\cite{ref:win_srv_overview}.
+\cite{ref:win_srv_overview}\cite{ref:win_srv_comp}.
 
 \begin{enumerate}
     \item Datacenter ‒ предназначен для развёртывания в облачных средах и в центрах по
@@ -29,18 +29,19 @@ Datacenter необходимо покупать дополнительные л
     \centering
     \caption{Сравнение редакций Windows Server 2019}
     \label{tab:win_srv_comp}
-    \begin{tabularx}{\linewidth}{XXXX}
+    \begin{tabu}to \linewidth{X[1,c,m]X[1,c,m]X[1,c,m]X[1,c,m]}
         \toprule
         Редакция & Essentials & Standart & Datacenter \\
+        \midrule
         Лицензирование & На сервер & На ядро + CAL & На ядро + CAL \\
-        Виртуализация & Да & Да; 2 виртуальные
+        Виртуализация & Да & Да; 2~виртуальные
         машины и один узел Hyper-V на лицензию & Да; неограниченное количество
         виртуальных машин и один узел Hyper-V на лицензию. \\
         Защищенные виртуальные машины & Нет & Нет & Да \\
         Программные сетевые интерфейсы & Нет & Нет & Да \\
         Программное хранилище данных & Нет & Нет & Да \\
         \bottomrule
-    \end{tabularx}
+    \end{tabu}
 \end{table}
 
 Исходя из этих ограничений, можно выбрать редакцию Essentials для разрабатываемого
