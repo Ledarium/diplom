@@ -1,14 +1,23 @@
 [hooks]
 "before:init" = ["./build.sh --full"]
-"after:version" = ["git checkout master", "git merge develop"]
-"after:release" = ["git checkout develop"]
+"after:init" = [
+    "git checkout master",
+    "git merge --ff develop",
+]
+"after:release" = [
+    "git log --pretty=format:'%s' ${latestVersion}...HEAD --grep='+ ' --reverse > changelog.txt",
+    "git checkout develop",
+]
 
 [git]
-"changelog" = """
-    git log --pretty=format:\"%s (%h)\" ${latestTag}...HEAD --grep='+ ' && \
-    echo "\nа также\n" && \
-    git log --pretty=format:\"%s (%h)\" ${latestTag}...HEAD --grep='+ ' --invert-grep
-"""
+"changelog" = '''
+    echo "### Плюсы\n" &&
+    git log --pretty=format:'%s (%h)' ${latestTag}...HEAD --grep='+ ' --reverse &&
+    echo "\n\n### Минусы\n" &&
+    git log --pretty=format:'%s (%h)' ${latestTag}...HEAD --grep='- ' --reverse &&
+    echo "\n\n### Подводные камни\n" &&
+    git log --pretty=format:'%s (%h)' ${latestTag}...HEAD --grep='+ ' --grep='- ' --invert-grep
+'''
 "commitMessage" = "Диплом: версия ${version}"
 "commit" = false
 
