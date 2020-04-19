@@ -16,7 +16,7 @@
     echo "\n\n### Минусы\n" &&
     git log --pretty=format:'%s (%h)' ${latestTag}...HEAD --grep='- ' --reverse &&
     echo "\n\n### Подводные камни\n" &&
-    git log --pretty=format:'%s (%h)' ${latestTag}...HEAD --grep='+ ' --grep='- ' --invert-grep
+    git log --pretty=format:'%s (%h)' ${latestTag}...HEAD --grep='+ ' --grep='- ' --invert-grep --reverse
 '''
 "commitMessage" = "Диплом: версия ${version}"
 "commit" = false
