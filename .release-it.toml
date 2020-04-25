@@ -10,14 +10,7 @@
 ]
 
 [git]
-"changelog" = '''
-    echo "### Плюсы\n" &&
-    git log --pretty=format:'%s (%h)' ${latestTag}...HEAD --grep='+ ' --reverse &&
-    echo "\n\n### Минусы\n" &&
-    git log --pretty=format:'%s (%h)' ${latestTag}...HEAD --grep='- ' --reverse &&
-    echo "\n\n### Подводные камни\n" &&
-    git log --pretty=format:'%s (%h)' ${latestTag}...HEAD --grep='+ ' --grep='- ' --invert-grep --reverse
-'''
+"changelog" = "./generate_changelog.sh ${latestTag} HEAD"
 "commitMessage" = "Диплом: версия ${version}"
 "commit" = false
 
