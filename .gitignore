@@ -2,3 +2,4 @@ out/
 *.aux
 out.pdf
 changelog.txt
+py/.ipynb_checkpoints/
