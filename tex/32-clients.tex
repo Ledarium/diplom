@@ -22,6 +22,13 @@ Lite без рабочего стола. Для установки ОС на mic
     \label{pic:rpi-etcher-complete}
 \end{figure}
 
+\begin{figure}[h]
+    \center
+    \includegraphics[width=\linewidth]{ph-solid}
+    \caption{Готовый к работе тонкий клиент}
+    \label{pic:ph-solid}
+\end{figure}
+
 После подтверждения успешной записи (см. рисунок~\ref{pic:rpi-etcher-complete}) можно
 выходить из программы. Далее microSD–карта устанавливается в Raspberry Pi, подключаются
 источник питания, сетевой кабель (на данном этапе нужен доступ в Интернет), клавиатура 
@@ -37,42 +44,44 @@ autologin).
 
 Обновление каталога ПО и установка нужных пакетов выполняется следующими командами:
 \begin{verbatim}
-    sudo apt update && sudo apt upgrade
-    sudo apt install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox
-    sudo apt install freerdp2-x11 pulseaudio
+sudo apt update && sudo apt upgrade
+sudo apt install --no-install-recommends xserver-xorg \
+    x11-xserver-utils xinit openbox
+sudo apt install freerdp2-x11 pulseaudio
 \end{verbatim}
 
 Теперь нужно настроить действия при загрузке сеанса. Редактируется файл
 \texttt{/etc/xdg/openbox/autostart}, в котором будет вызываться RDP-клиент:
 \begin{verbatim}
-    # Отключить все функции энергосбережения
-    xset s off
-    xset s noblank
-    xset -dpms
+# Отключить все функции энергосбережения
+xset s off
+xset s noblank
+xset -dpms
 
-    # Перезагрузка сеанса по Ctrl-Alt-Backspace
-    setxkbmap -option terminate:ctrl_alt_bksp
+# Завершение сеанса по Ctrl-Alt-Backspace
+setxkbmap -option terminate:ctrl_alt_bksp
 
-    # Запуск RDP с нужными параметрами
-    while true; do
-        xfreerdp /fonts /bpp:15 /f /audio-mode:0 /u:[user] /p:[password] /v:[ip] /gdi:hw /sound:sys:pulse /gfx:rfx /rfx-mode:video +bitmap-cache +offscreen-cache -clipboard
-    done
+# Запуск RDP с нужными параметрами
+while true; do
+  xfreerdp /fonts /bpp:15 /f /audio-mode:0 /u:[user] /p:[password] \
+    /v:[ip] /gdi:hw /sound:sys:pulse /gfx:rfx /rfx-mode:video \
+    +bitmap-cache +offscreen-cache -clipboard
+done
 \end{verbatim}
 
 Нужно заменить поля в квадратных скобках на пользователя, пароль и IP-адрес сервера.
 Теперь можно проверить работоспособность системы, загрузившись в графический режим:
-
 \begin{verbatim}
-    startx --
+startx --
 \end{verbatim}
 
-Запускается RDP-клиент. Подключение к удаленному рабочему столу успешно. Завершается
+Запускается RDP-клиент. Подключение к удаленному рабочему столу успешно (см.
+рисунок~\ref{pic:ph-solid}). Завершается
 сеанс нажатием комбинации клавиш Ctrl-Alt-Backspace. Осталось только прописать
 автоматическую загрузку сеанса. Для этого в конец файла \texttt{~/.bash\_profile} нужно
 добавить следующую строку:
-
 \begin{verbatim}
-    [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx --
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx --
 \end{verbatim}
 
 После этого можно перезагрузить систему. После загрузки автоматически установится
