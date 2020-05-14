@@ -1,4 +1,4 @@
-alias gl="git --no-pager log --pretty=format:'%s (%h)'"
+alias gl="git --no-pager log --pretty=format:'%s'"
 echo "### Плюсы\n"
 gl $1...$2 --grep='+ ' --reverse
 echo "\n\n### Минусы\n"
