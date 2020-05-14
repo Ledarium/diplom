@@ -72,11 +72,6 @@ headsep=1cm, footskip=1cm
     rightsub = “%
 ]{dirtytalk}
 
-%use \input for files. used with latexmk
-\newcommand\inputfile[1]{%
-    \InputIfFileExists{#1}{}{\typeout{No file #1.}}%
-}
-
 % line spacing
 \usepackage[nodisplayskipstretch]{setspace}
 \setstretch{1.5}
@@ -229,7 +224,7 @@ headsep=1cm, footskip=1cm
 \makeatother
 % -----------------------------
 
+\usepackage{indentfirst}
 %paragraph indent
 \setlength{\parindent}{1.25cm}
-\usepackage{indentfirst}
 

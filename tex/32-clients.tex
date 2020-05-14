@@ -1,3 +1,4 @@
+\clearpage
 \subsection{Подготовка клиентов}
 
 Для того, чтобы подготовить к работе терминал, нужно установить ОС, RDP-клиент, и 
@@ -24,6 +25,13 @@ Lite без рабочего стола. Для установки ОС на mic
 
 \begin{figure}[h]
     \center
+    \includegraphics[width=\linewidth]{raspi-config}
+    \caption{Окно утилиты \texttt{raspi-config}}
+    \label{pic:raspi-config}
+\end{figure}
+
+\begin{figure}[h]
+    \center
     \includegraphics[width=\linewidth]{ph-solid}
     \caption{Готовый к работе тонкий клиент}
     \label{pic:ph-solid}
@@ -36,11 +44,11 @@ Lite без рабочего стола. Для установки ОС на mic
 \texttt{pi}, пароль — \texttt{raspberry}). Теперь доступен режим работы с командной
 строкой.
 
-Нужно установить раскладку клавиатуры \texttt{en\_US.UTF-8} и выбрать часовой пояс. Это можно
-сделать с помощью программы \texttt{raspi-config} в пункте Localisation Options. Также
-необходимо сменить пароль для пользователя \texttt{pi} (Change User Password), а также
-выбрать режим автоматического входа в систему (Boot Options — Desktop/CLI — Console
-autologin).
+Нужно установить раскладку клавиатуры \texttt{en\_US.UTF-8} и выбрать часовой пояс. Это
+можно сделать с помощью программы \texttt{raspi-config} (см.
+рисунок~\ref{pic:raspi-config}) в пункте Localisation Options.  Также необходимо сменить
+пароль для пользователя \texttt{pi} (Change User Password), а также выбрать режим
+автоматического входа в систему (Boot Options — Desktop/CLI — Console autologin).
 
 Обновление каталога ПО и установка нужных пакетов выполняется следующими командами:
 \begin{verbatim}
@@ -87,5 +95,6 @@ startx --
 После этого можно перезагрузить систему. После загрузки автоматически установится
 RDP-соединение. Комбинация клавиш Ctrl-Alt-Backspace закрывает сеанс и возвращает в
 консоль, это можно использовать при необходимости поменять конфигурацию. В графический
-режим можно вернуться командой \texttt{startx --}.
+режим можно вернуться командой \texttt{startx --}, а комбинация клавиш Ctrl-D
+перезапустит сеанс.
 

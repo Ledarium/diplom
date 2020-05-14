@@ -10,16 +10,17 @@
 
 \begin{document}
 % Some dirty hacks to stretch document
-    \tabulinesep=5pt% table rows spacing
+\tabulinesep=5pt% table rows spacing
 
-    \newdimen\origiwspc%
-    \newdimen\origiwstr%
-    \origiwspc=\fontdimen2\font% original inter word space
-    \origiwstr=\fontdimen3\font% original inter word stretch
-    \fontdimen3\font=1.6\origiwstr% (original) inter word stretch
-    \fontdimen2\font=0.4em% inter word space
+\newdimen\origiwspc%
+\newdimen\origiwstr%
+\origiwspc=\fontdimen2\font% original inter word space
+\origiwstr=\fontdimen3\font% original inter word stretch
+\fontdimen3\font=1.6\origiwstr% (original) inter word stretch
+\fontdimen2\font=0.4em% inter word space
 
-    \setlength{\emergencystretch}{70pt}
+\setlength{\emergencystretch}{70pt}
+
 %\include{00-titul}
 \input{02-referat}
 \thispagestyle{empty} % выключаем отображение номера для этой страницы
@@ -27,9 +28,6 @@
 \setcounter{page}{7} % номер страницы оглавления. Может быть полезным при использовании не родного титульного
 \tableofcontents
 \thispagestyle{empty} % выключаем отображение номера для этой страницы
-
-%paragraph indent
-\setlength{\parindent}{1.25cm}
 
 \input{04-abbrev}
 \clearpage
