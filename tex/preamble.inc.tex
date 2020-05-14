@@ -42,12 +42,6 @@
     references = {Список использованных источников}
 }
 \addbibresource{my.bib}
-%disable uri encoding
-\usepackage{hyperref}
-\DeclareFieldFormat{url}{%
-  \mkbibacro{URL}\addcolon\space
-  \href{#1}{\nolinkurl{\thefield{urlraw}}}}
-
 \DeclareSourcemap{
   \maps[datatype=bibtex]{
     \map{
@@ -86,7 +80,6 @@ headsep=1cm, footskip=1cm
 % line spacing
 \usepackage[nodisplayskipstretch]{setspace}
 \setstretch{1.5}
-\AtBeginEnvironment{tabu}{\renewcommand\arraystretch{1.3}}{}{}
 
 %pictures
 \usepackage{graphicx}
@@ -179,6 +172,7 @@ headsep=1cm, footskip=1cm
 
 \usepackage{xtab}
 \usepackage{tabu}
+\AtBeginEnvironment{tabu}{\renewcommand\arraystretch{1.3}}{}{}
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd{\estimate@lineht}{1\p@}{-2.5\p@}{}{}
@@ -207,3 +201,34 @@ headsep=1cm, footskip=1cm
 \usepackage{totcount}
 \newtotcounter{citenum}
 \AtEveryBibitem{\stepcounter{citenum}}
+
+%disable uri encoding
+\usepackage{hyperref}
+\DeclareFieldFormat{url}{%
+  \mkbibacro{URL}\addcolon\space
+  \href{#1}{\nolinkurl{\thefield{urlraw}}}}
+
+% tabu-fix
+% to make "spread 0pt" work
+% -----------------------------
+\RequirePackage{etoolbox}
+\makeatletter
+\patchcmd
+	\tabu@startpboxmeasure
+	{\bgroup\begin{varwidth}}%
+	{\bgroup
+	 \iftabu@spread\color@begingroup\fi\begin{varwidth}}%
+	{}{}
+\def\@tabarray{\m@th\def\tabu@currentgrouptype
+    {\currentgrouptype}\@ifnextchar[\@array{\@array[c]}}
+%
+%%% \pdfelapsedtime bug 2019-12-15
+\patchcmd
+	\tabu@message@etime
+	{\the\pdfelapsedtime}%
+	{\pdfelapsedtime}%
+	{}{}
+%
+%
+\makeatother
+% -----------------------------
