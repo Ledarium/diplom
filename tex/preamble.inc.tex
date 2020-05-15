@@ -97,7 +97,7 @@ headsep=1cm, footskip=1cm
 \titleformat{\chapter}[display]
   {\normalfont\justifyheading\bfseries}
   {\thechapter}{1em}{\MakeUppercase{#1}}
-  \titlespacing*{\chapter}{\parindent}{-18pt plus 4pt minus 2pt}{30pt plus 4pt minus 2pt}
+  \titlespacing*{\chapter}{\parindent}{-12pt plus 4pt minus 2pt}{12pt plus 4pt minus 2pt}
 
 \titleformat{\section}
   {\normalfont\bfseries}
@@ -115,7 +115,8 @@ headsep=1cm, footskip=1cm
   \titlespacing*{\subsubsection}{\parindent}{12pt plus 4pt minus 2pt}{12pt plus 4pt minus 2pt}
 
 %setting numeration
-\renewcommand\thesection{\arabic{section}}
+\renewcommand\thechapter{\arabic{chapter}}
+\renewcommand\thesection{\thechapter.\arabic{section}}
 \renewcommand\thesubsection{\thesection.\arabic{subsection}}
 \renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
 \setcounter{secnumdepth}{3}
@@ -133,7 +134,8 @@ headsep=1cm, footskip=1cm
 \renewcommand{\labelitemiii}{—}
 
 \usepackage{chngcntr}
-\counterwithin{equation}{section}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
 %tables and figures https://habr.com/ru/post/144648/
 \usepackage[
     format=plain,
