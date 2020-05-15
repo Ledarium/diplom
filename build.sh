@@ -38,5 +38,5 @@ fi
 cp out.pdf $DIR/out.pdf
 
 cd $DIR/slides
-make_slides.sh
-cp slides.pdf $DIR/out.pdf
+./make_slides.sh
+cp slides.pdf $DIR/slides.pdf
