@@ -24,6 +24,7 @@ cp $DIR/bib/* $DIR/out/
 cp $DIR/tex/* $DIR/out/
 cp $DIR/img/* $DIR/out/
 cd $DIR/out
+
 if [ "$1" == "--full" ]; then
 	cmake ..
 	make
@@ -35,3 +36,7 @@ else
 	xelatex out.tex
 fi
 cp out.pdf $DIR/out.pdf
+
+cd $DIR/slides
+make_slides.sh
+cp slides.pdf $DIR/out.pdf

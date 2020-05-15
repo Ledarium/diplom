@@ -17,5 +17,5 @@
 [github]
 "releaseName" = "Диплом: версия ${version}"
 "release" = true
-"assets" = ["out.pdf"]
+"assets" = ["out.pdf", "slides.pdf"]
 "draft" = true
