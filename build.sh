@@ -35,8 +35,9 @@ else
 	biblatex out.tex
 	xelatex out.tex
 fi
-cp out.pdf $DIR/out.pdf
+cd $DIR/
+pdftk shit/*.pdf out/out.pdf cat output диплом.pdf
 
 cd $DIR/slides
 ./make_slides.sh
-cp slides.pdf $DIR/slides.pdf
+cp slides.pdf $DIR/презентация.pdf
