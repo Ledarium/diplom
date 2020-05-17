@@ -36,8 +36,11 @@ else
 	xelatex out.tex
 fi
 cd $DIR/
-pdftk shit/*.pdf out/out.pdf cat output диплом.pdf
+pdftk shit/*.pdf out/out.pdf cat output out/full.pdf
 
 cd $DIR/slides
 ./make_slides.sh
-cp slides.pdf $DIR/презентация.pdf
+
+cd $DIR/slides
+cp slides/slides.pdf презентация.pdf
+cp out/full.pdf диплом.pdf
