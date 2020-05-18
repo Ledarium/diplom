@@ -41,6 +41,6 @@ pdftk shit/*.pdf out/out.pdf cat output out/full.pdf
 cd $DIR/slides
 ./make_slides.sh
 
-cd $DIR/slides
+cd $DIR/
 cp slides/slides.pdf презентация.pdf
 cp out/full.pdf диплом.pdf
