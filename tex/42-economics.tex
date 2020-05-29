@@ -34,6 +34,26 @@ Microsoft Windows Server Essentials 2019, коробочная версия дл
 организацию, соответственно стоимость для одного клиента будет одинакова в обоих
 сценариях.
 
+\begin{figure}[h]
+    \center
+    \includegraphics[width=\linewidth]{price_chart}
+    \caption{Зависимость стоимости системы от количества клиентов}
+    \label{pic:price_chart}
+\end{figure}
+
+\begin{table}[h]
+    \centering
+    \caption{Оценка экономичности системы ТК}
+    \label{tab:price_comp}
+    \begin{tabu}to \linewidth{X[3,l]X[c,m]X[c,m]X[c,m]}
+        \toprule
+        Количество клиентов & 15 & 20 & 25 \\
+        \midrule
+        \input{eco}
+        \bottomrule
+    \end{tabu}
+\end{table}
+
 В результате расчетов были построены графики зависимости стоимости программного и
 аппаратного обеспечения от количества клиентов (см. рисунок~\ref{pic:price_chart}).
 Фрагмент расчетной таблицы приведен ниже (см. таблицу~\ref{tab:price_comp}).
@@ -52,26 +72,6 @@ Microsoft Windows Server Essentials 2019, коробочная версия дл
 Стоит отметить, что при необходимости дальнейшей модернизации, достаточно будет обновить
 аппаратное обеспечение только серверной части, что также уменьшает дальнейшие затраты на
 оборудование.
-
-\begin{table}[h]
-    \centering
-    \caption{Оценка экономичности системы ТК}
-    \label{tab:price_comp}
-    \begin{tabu}to \linewidth{X[3,l]X[c,m]X[c,m]X[c,m]}
-        \toprule
-        Количество клиентов & 15 & 20 & 25 \\
-        \midrule
-        \input{eco}
-        \bottomrule
-    \end{tabu}
-\end{table}
-
-\begin{figure}[h]
-    \center
-    \includegraphics[width=\linewidth]{price_chart}
-    \caption{Зависимость стоимости системы от количества клиентов}
-    \label{pic:price_chart}
-\end{figure}
 
 \begin{table}[b]
     \centering
@@ -114,5 +114,3 @@ Microsoft Windows Server Essentials 2019, коробочная версия дл
         \bottomrule
     \end{tabu}
 \end{table}
-
-\fixme{Анализ на устойчивость}
