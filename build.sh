@@ -36,7 +36,7 @@ else
 	xelatex out.tex
 fi
 cd $DIR/
-pdftk shit/*.pdf out/out.pdf doc/case/PDF/*.PDF cat output out/full.pdf
+pdftk out/out.pdf doc/case/PDF/*.PDF cat 2-end output out/full.pdf
 pdftk out/out.pdf cat 1 output shit/50-ref.pdf
 
 cd $DIR/slides
