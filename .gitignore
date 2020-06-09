@@ -1,5 +1,5 @@
 out/
 *.aux
-*.pdf
 changelog.txt
 py/.ipynb_checkpoints/
+./*.pdf
