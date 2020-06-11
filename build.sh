@@ -45,3 +45,4 @@ cd $DIR/slides
 cd $DIR/
 cp slides/slides.pdf презентация.pdf
 pdftk out/full.pdf cat 2-end output диплом.pdf
+pdftk shit/*-*.pdf диплом.pdf cat end output "диплом с титульными.pdf"
