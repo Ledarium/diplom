@@ -37,7 +37,7 @@ else
 fi
 cd $DIR/
 pdftk out/out.pdf doc/case/PDF/*.PDF cat output out/full.pdf
-pdftk out/out.pdf cat 1 output shit/50-ref.pdf
+#pdftk out/out.pdf cat 1 output shit/50-ref.pdf
 
 cd $DIR/slides
 ./make_slides.sh
@@ -45,4 +45,4 @@ cd $DIR/slides
 cd $DIR/
 cp slides/slides.pdf презентация.pdf
 pdftk out/full.pdf cat 2-end output диплом.pdf
-pdftk shit/*-*.pdf диплом.pdf cat end output "диплом с титульными.pdf"
+pdftk shit/*-*.pdf диплом.pdf cat output "диплом с титульными.pdf"

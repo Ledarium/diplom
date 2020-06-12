@@ -9,6 +9,8 @@
 \include{preamble.inc}
 
 \begin{document}
+\setlength{\emergencystretch}{70pt}
+
 % Some dirty hacks to stretch document
 \tabulinesep=5pt% table rows spacing
 
@@ -19,16 +21,18 @@
 \fontdimen3\font=1.6\origiwstr% (original) inter word stretch
 \fontdimen2\font=0.4em% inter word space
 
-\setlength{\emergencystretch}{70pt}
-
+\setstretch{1.5}
 %\include{00-titul}
 \input{02-referat}
 \thispagestyle{empty} % выключаем отображение номера для этой страницы
-\setcounter{page}{5} % номер страницы реферата
 
+\setstretch{1.3}
+%\include{00-titul}
 \tableofcontents
 \thispagestyle{empty} % выключаем отображение номера для этой страницы
+\setcounter{page}{7} % номер страницы
 
+\setstretch{1.5}
 \input{04-abbrev}
 
 \input{05-intro}
